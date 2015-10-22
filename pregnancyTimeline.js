@@ -1,5 +1,5 @@
 var scriptRoot = "https://sites.google.com/site/wizardclocks/special-events/pregnancy-clock/";
-
+scriptRoot='';
 var clockMotor = (function () {
     var clockWidth = 60;
     var cm = {};

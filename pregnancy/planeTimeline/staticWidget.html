@@ -1,0 +1,13 @@
+<div id="pregnancy-clock-div"></div>
+<script type="text/javascript">
+    var f = function () {
+        var clockDiv = document.getElementById("pregnancy-clock-div");
+        var iFrame = document.createElement('iframe');
+        clockDiv.appendChild(iFrame);
+        iFrame.width  = "620px";
+        iFrame.height = "203px";
+        iFrame.style.border = "none";
+        iFrame.src = "pregnancyTimeline.html#2016-06-03";
+        return;
+    }();
+</script>

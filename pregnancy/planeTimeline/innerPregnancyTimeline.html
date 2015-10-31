@@ -3,7 +3,7 @@
     <title>Pregnancy Timeline</title>
     <style type="text/css">
       body {
-          background-color: #eef;
+          /* background-color: #eef; */
       }
     </style>
   </head>
@@ -14,6 +14,9 @@
     </script>
     <script type="text/javascript">
       var dueDateStr = document.location.hash.toString().replace(/^#/,'');
+      if (!dueDateStr) {
+         dueDateStr = '2016-06-03';
+      }
       createTimeline(dueDateStr, document.getElementById("pregnancy-clock-div"))
     </script>
   </body>

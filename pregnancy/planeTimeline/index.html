@@ -11,11 +11,20 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!-- Use jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   </head>
   <body>
     <article>
       <h1>Stork Plane Pregnancy Timeline</h1>
+      <p>
+        This clock is a favorite of mine, which I developed to track my second
+        son's pregnancy.  
+      </p>
       <div id="sample-div">
+        <!--
         <div id="pregnancy-timeline-div">
         </div>
         <script id="pregnancy-timeline-code" 
@@ -26,10 +35,65 @@
           embedTimeline('pregnancy-timeline-div', '2016-06-03', '');
         </script>
       </div>
-      <p>
-        This clock is a favorite of mine, which I developed to track my second
-        son's pregnancy.  
-      </p>
+      -->
+      <div id="pregnancy-timeline-widget">
+        <script type="text/javascript" src="embedTimeline.js">
+        </script>
+        <script type="text/javascript">
+          embedTimeline('pregnancy-timeline-widget',
+                        '11/30/2015', '');
+        </script>
+      </div>
+      </div>
+      <div id="widget-sample-div">
+        <div id="widget"/>
+            <!--
+            <div id="widget-template" style="display: none;">
+            <script-template type="template/javascript" src="${root}embedTimeline.js">
+            </script>
+            <script-template type="template/javascript">
+            embedTimeline('${divId}',
+            '${dueDate}', '${root}');
+            </script>
+            </div>-->
+      </div>   
+      <div id="widget-generator">
+        <form id="widget-form" target="#sample-div">
+          <label for="dueDate">Due Date:</label>
+          <input id="dueDate" type="date" name="dueDate"/>
+          <input type="submit" value="Generate Widget"/>
+        </form>
+        <script type="text/javascript">
+          $(function() {
+              $('#dueDate').datepicker();
+              $('#widget-form').submit(
+                  function (data) {
+                      var root = document.location.protocol + '//' +
+                                 document.location.host + 
+                                 document.location.pathname;
+                      // Create the widget
+                      var divId = 'pregnancy-timeline';
+                      var w = $('#widget');
+                      var w2 = $('<div id="' + divId + '-wrapper">');
+                      w.append(w2);
+                      var widget = $('<div id="' + divId + '">');
+w.append(widget);
+                      var embedTimelineSrc = root + 'embedTimeline.js';
+                      var scriptTag = '<script src="' + embedTimelineSrc + '">';
+                      widget.append($(scriptTag));
+                      var embedStr = "embedTimeline('" + divId + "', " +
+                                       "'" + $('#dueDate').val() + "'," +
+                                       "'" + root + "');";
+                      scriptTag = $('<script type="text/javascript">');
+                      scriptTag.text(embedStr);
+                      widget.append(scriptTag);
+                      w.append(widget);
+                      return false;
+                  }
+              );
+          })
+        </script>
+      </div>
     </article>
   </body>
 </html>

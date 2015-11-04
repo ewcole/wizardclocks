@@ -70,7 +70,7 @@
                   function (data) {
                       var root = document.location.protocol + '//' +
                                  document.location.host + 
-                                 document.location.pathname;
+                                 document.location.pathname.replace(/[^\/]*$/,'');
                       // Create the widget
                       var divId = 'pregnancy-timeline';
                       var w = $('#widget');

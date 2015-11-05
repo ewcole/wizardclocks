@@ -24,16 +24,17 @@
         son's pregnancy.  
       </p>
       <div id="sample-div">
-        <div id="pregnancy-timeline-widget">
-          <div id="pregnancy-timeline"/>
-          <script type="text/javascript" src="embedTimeline.js">
-          </script>
-          <script type="text/javascript">
-            embedTimeline('sample-div',
-            '06/03/2016', '');
-          </script>
-        </div>
       </div>
+      <div id="pregnancy-timeline-widget">
+        <div id="pregnancy-timeline"/>
+        <script type="text/javascript" src="embedTimeline.js">
+        </script>
+        <script type="text/javascript">
+          embedTimeline('sample-div',
+          '06/03/2016', '');
+        </script>
+      </div>
+      <div id="widget-text"></div>
       <div id="widget-sample-div">
         <div id="widget"/>
             <!--
@@ -47,7 +48,6 @@
             </div>-->
             
       </div>   
-        <pre id="widget-text"></pre>
       <div id="widget-generator">
         <form id="widget-form" target="#sample-div">
           <label for="dueDate">Due Date:</label>
@@ -64,23 +64,22 @@
                                  document.location.pathname.replace(/[^\/]*$/,'');
                       // Create the widget
                       var divId = 'pregnancy-timeline';
-                      var w = $('#sample-div');
-                      w.html('');
-                      var w2 = $('<div id="' + divId + '-wrapper">');
-                      w.append(w2);
+                      var sampleDiv = $('#sample-div');
+                      sampleDiv.html('');
+                      var widgetWrapper = $('<div id="' + divId + '-wrapper">');
                       var widget = $('<div id="' + divId + '">');
-//w.append(widget);
+                      widgetWrapper.append(widget)
                       var embedTimelineSrc = root + 'embedTimeline.js';
                       var scriptTag = '<script src="' + embedTimelineSrc + '">';
-                      widget.append($(scriptTag));
+                      widgetWrapper.append($(scriptTag));
                       var embedStr = "embedTimeline('" + divId + "', " +
                                        "'" + $('#dueDate').val() + "'," +
                                        "'" + root + "');";
                       scriptTag = $('<script type="text/javascript">');
                       scriptTag.text(embedStr);
-                      widget.append(scriptTag);
-                      $('#widget-text').text(w2.html())
-                      w.append(widget);
+                      widgetWrapper.append(scriptTag);
+                      $('#widget-text').text(widgetWrapper.html())
+                      sampleDiv.append(widgetWrapper);
                       return false;
                   }
               );

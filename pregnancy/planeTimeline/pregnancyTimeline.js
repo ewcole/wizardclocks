@@ -184,7 +184,7 @@ var createTimeline = function (dueDateString, div) {
     frame.appendChild(img);
     frame.setSliderPosition = function () {
         rawProgress = today.getTime() - conception.getTime();
-        img.style.left = (Math.ceil((rawProgress / rawScale) * width - sliderWidth / 2)) + "px";
+        img.style.left = (Math.ceil((Math.min(rawProgress / rawScale,1)) * width - sliderWidth / 2)) + "px";
     };
     frame.setSliderPosition();
     // update the position once an hour.

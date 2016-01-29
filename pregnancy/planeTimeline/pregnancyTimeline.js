@@ -79,7 +79,7 @@ var clockMotor = (function () {
 
 var createTimeline = function (dueDateString, div) {
     // Dimensions for the slider
-    var slider = "StorkPlaneTiny.png?attredirects=0&d=1";
+    var slider = "StorkPlaneTiny.png";
     var sliderHeight = 174;
     var sliderWidth  = 240;
     //var sliderMid = sliderWidth / 2;
